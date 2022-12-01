@@ -70,6 +70,7 @@ const modals = () => {
     }
 
     bindModal('.button-design', '.popup-design', '.popup-design .popup-close');
+    bindModal('.button-consultation', '.popup-consultation', '.popup-consultation .popup-close');
     //showModalByTime('.popup_call', 5000);
 };
 

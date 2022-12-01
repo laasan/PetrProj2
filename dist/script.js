@@ -1014,7 +1014,8 @@ var modals = function modals() {
     return scrollWidth;
   }
 
-  bindModal('.button-design', '.popup-design', '.popup-design .popup-close'); //showModalByTime('.popup_call', 5000);
+  bindModal('.button-design', '.popup-design', '.popup-design .popup-close');
+  bindModal('.button-consultation', '.popup-consultation', '.popup-consultation .popup-close'); //showModalByTime('.popup_call', 5000);
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (modals);
