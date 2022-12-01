@@ -2,10 +2,13 @@ const modals = () => {
     function bindModal(triggerSelector, modalSelector, closeSelector, closeClickOverlay = true) {
         const trigger = document.querySelectorAll(triggerSelector),
             modal = document.querySelector(modalSelector),
-            close = document.querySelector(closeSelector);
+            close = document.querySelector(closeSelector),
+            gift = document.querySelector('.fixed-gift');
 
         const windows = document.querySelectorAll('[data-modal]');
         const scroll = calcScroll();
+
+
 
         trigger.forEach(item => {
             item.addEventListener('click', (e) => {
@@ -20,6 +23,7 @@ const modals = () => {
                 modal.style.display = 'block';
                 document.body.style.overflow = 'hidden';
                 document.body.style.marginRight = `${scroll}px`;
+                gift.style.marginRight = `${scroll}px`;
             });
         });
         
@@ -31,6 +35,7 @@ const modals = () => {
             modal.style.display = 'none';
             document.body.style.overflow = '';
             document.body.style.marginRight = `0px`;
+            gift.style.marginRight = `0px`;
         });
 
         modal.addEventListener('click', (e) => {
@@ -41,7 +46,8 @@ const modals = () => {
 
                 modal.style.display = 'none';
                 document.body.style.overflow = '';
-                document.body.style.marginRight = `0px`;    
+                document.body.style.marginRight = `0px`;
+                gift.style.marginRight = `0px`;   
             }
         });
     }
@@ -64,6 +70,9 @@ const modals = () => {
                 // scroll from above not available here because of timer, so we create scroll right here
                 let scroll = calcScroll();
                 document.body.style.marginRight = `${scroll}px`;
+
+                let gift = document.querySelector('.fixed-gift');
+                gift.style.marginRight = `${scroll}px`;
             }
             
         }, time);

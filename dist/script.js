@@ -958,7 +958,8 @@ var modals = function modals() {
     var closeClickOverlay = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : true;
     var trigger = document.querySelectorAll(triggerSelector),
         modal = document.querySelector(modalSelector),
-        close = document.querySelector(closeSelector);
+        close = document.querySelector(closeSelector),
+        gift = document.querySelector('.fixed-gift');
     var windows = document.querySelectorAll('[data-modal]');
     var scroll = calcScroll();
     trigger.forEach(function (item) {
@@ -973,6 +974,7 @@ var modals = function modals() {
         modal.style.display = 'block';
         document.body.style.overflow = 'hidden';
         document.body.style.marginRight = "".concat(scroll, "px");
+        gift.style.marginRight = "".concat(scroll, "px");
       });
     });
     close.addEventListener('click', function () {
@@ -982,6 +984,7 @@ var modals = function modals() {
       modal.style.display = 'none';
       document.body.style.overflow = '';
       document.body.style.marginRight = "0px";
+      gift.style.marginRight = "0px";
     });
     modal.addEventListener('click', function (e) {
       if (e.target === modal && closeClickOverlay) {
@@ -991,6 +994,7 @@ var modals = function modals() {
         modal.style.display = 'none';
         document.body.style.overflow = '';
         document.body.style.marginRight = "0px";
+        gift.style.marginRight = "0px";
       }
     });
   }
@@ -1010,6 +1014,8 @@ var modals = function modals() {
 
         var scroll = calcScroll();
         document.body.style.marginRight = "".concat(scroll, "px");
+        var gift = document.querySelector('.fixed-gift');
+        gift.style.marginRight = "".concat(scroll, "px");
       }
     }, time);
   }
