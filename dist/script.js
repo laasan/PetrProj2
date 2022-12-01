@@ -1006,7 +1006,10 @@ var modals = function modals() {
 
       if (!display) {
         document.querySelector(selector).style.display = 'block';
-        document.body.style.overflow = 'hidden';
+        document.body.style.overflow = 'hidden'; // scroll from above not available here because of timer, so we create scroll right here
+
+        var scroll = calcScroll();
+        document.body.style.marginRight = "".concat(scroll, "px");
       }
     }, time);
   }

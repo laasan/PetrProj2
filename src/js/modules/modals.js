@@ -20,7 +20,6 @@ const modals = () => {
                 modal.style.display = 'block';
                 document.body.style.overflow = 'hidden';
                 document.body.style.marginRight = `${scroll}px`;
-            
             });
         });
         
@@ -61,6 +60,10 @@ const modals = () => {
             if (!display) {
                 document.querySelector(selector).style.display = 'block';
                 document.body.style.overflow = 'hidden';
+
+                // scroll from above not available here because of timer, so we create scroll right here
+                let scroll = calcScroll();
+                document.body.style.marginRight = `${scroll}px`;
             }
             
         }, time);
