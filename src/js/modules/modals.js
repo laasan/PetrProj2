@@ -26,6 +26,7 @@ const modals = () => {
 
                 windows.forEach(item => {
                     item.style.display = '';
+                    item.classList.add('animated', 'fadeIn');
                 });
 
                 modal.style.display = 'block';
