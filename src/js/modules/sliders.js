@@ -42,6 +42,19 @@ const sliders = (slides, direction, prev, next) => {
             
         });
     } catch (error) {}
+
+    if (direction === 'vertical') {
+        setInterval(function() {
+            plusSlides(1);
+            items[slideIndex - 1].classList.add('slideInDown');
+        }, 3000);
+    } else {
+        setInterval(function() {
+            plusSlides(1);
+            items[slideIndex - 1].classList.remove('slideInLeft');
+            items[slideIndex - 1].classList.add('slideInRight');
+        }, 3000);
+    }
 };
 
 export default sliders;
