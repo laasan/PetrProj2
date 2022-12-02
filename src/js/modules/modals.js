@@ -103,8 +103,10 @@ const modals = () => {
 
     function openByScroll(selector) {
         window.addEventListener('scroll', () => {
-            if (!btnPressed && (window.pageYOffset + document.documentElement.clientHeight >=
-                                document.documentElement.scrollHeight)) {
+            // for old brouser versions
+            let scrollHeight = Math.max(document.documentElement.scrollHeight, document.body.scrollHeight);
+
+            if (!btnPressed && (window.pageYOffset + document.documentElement.clientHeight >= scrollHeight)) {
                 document.querySelector(selector).click();
             }
         });
