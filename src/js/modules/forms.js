@@ -77,6 +77,9 @@ const forms = () => {
                     clearInputs();
                     setTimeout(() => {
                         statusMessage.remove();
+                        item.style.display = 'block';
+                        item.classList.remove('fadeOutUp');
+                        item.classList.add('fadeInUp');
                     }, 5000);
                 });
         });
