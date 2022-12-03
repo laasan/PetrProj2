@@ -60,10 +60,11 @@ const forms = () => {
             statusMessage.appendChild(textMessage);
 
             const formData = new FormData(item);
-            let api = item.closest('.popup-design') ? path.designer : path.question;
+            let api;
+            item.closest('.popup-design') ? api = path.designer : api = path.question;
             console.log(api);
 
-            postData('assets/server.php', formData)
+            postData(api, formData)
                 .then(res => {
                     console.log(res);
                     statusImg.setAttribute('src', message.ok);
