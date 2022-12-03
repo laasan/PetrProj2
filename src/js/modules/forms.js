@@ -1,8 +1,9 @@
 // import checkNumInputs from "./checkNumInputs";
 
 const forms = () => {
-    const form = document.querySelectorAll('form');
-    const inputs = document.querySelectorAll( "input" );
+    const form = document.querySelectorAll('form'),
+          inputs = document.querySelectorAll( "input" ),
+          upload = document.querySelectorAll('[name="upload"]');
 
     // checkNumInputs('input[name="user_phone"]');
 
@@ -33,7 +34,22 @@ const forms = () => {
         inputs.forEach(item => {
             item.value = '';
         });
+
+        upload.forEach(item => {
+            item.previousElementSibling.textContent = 'Файл не выбран';
+        });
     };
+
+    upload.forEach(item => {
+        item.addEventListener('input', () => {
+            console.log(item.files[0]);
+            let dots;
+            const nameArray = item.files[0].name.split('.');
+            nameArray[0].length > 7 ? dots = '...' : dots = '.';
+            const name = nameArray[0].substring(0,7) + dots + nameArray[1];
+            item.previousElementSibling.textContent = name;
+        });
+    });
 
     form.forEach(item => {
         item.addEventListener('submit', (e) => {
