@@ -16,6 +16,16 @@ const mask = (selector) => {
     };
 
     function createMask(event) {
+        if (this.value.slice(0,2) !== '+7') {
+            let tmp = this.value.slice(0,2);
+            if (tmp.includes('+')) {
+                tmp = tmp.replace('+', '');
+            } else {
+                tmp = tmp.slice(0,1);
+            }
+            this.value = '+7 (' + tmp + this.value.slice(4);
+        }
+
         let matrix = '+7 (___) ___ __ __',
             i = 0,
             def = matrix.replace(/\D/g, ''),
