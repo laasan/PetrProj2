@@ -1,8 +1,7 @@
 import { getResource } from "../services/requests";
 
-const showMoreStyles = (trigger, styles) => {
-    const cards = document.querySelectorAll(styles),
-          btn = document.querySelector(trigger);
+const showMoreStyles = (trigger, wrapper) => {
+    const btn = document.querySelector(trigger);
 
     // cards.forEach(card => {
     //     card.classList.add('animated', 'fadeInUp');
@@ -17,12 +16,40 @@ const showMoreStyles = (trigger, styles) => {
     //     btn.remove();
     // });
 
-    btn.addEventListener('click', () => {
+    btn.addEventListener('click', function() {        
         getResource('http://localhost:3000/styles')
-           .then(res => {
-                console.log(res);
-           });
+           .then(res => createCards(res))
+           .catch(error => console.log(error));
+
+        this.remove();
     });
+
+    function createCards(response) {
+        // console.log(response);
+        response.forEach(item => {
+            let card = document.createElement('div');
+            
+            card.classList.add('animated', 'fadeInUp', 'col-sm-3', 'col-sm-offset-0', 'col-xs-10', 'col-xs-offset-1');
+
+            card.innerHTML = `
+                <div class="styles-block">
+                    <img src=${item.src} alt="style">
+                    <h4>${item.title}</h4>
+                    <a href=${item.link}>Подробнее</a>
+                </div>
+            `;
+
+            document.querySelector(wrapper).appendChild(card);
+        });
+    }
+    
+//     <div class="hidden-lg hidden-md hidden-sm hidden-xs styles-2">
+//     <div class=styles-block>
+//         <img src=assets/img/styles-5.jpg alt>
+//         <h4>Пастелью</h4>
+//         <a href="#">Подробнее</a>
+//     </div>
+// </div>
 };
 
 export default showMoreStyles;

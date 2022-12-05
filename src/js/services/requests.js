@@ -14,7 +14,7 @@ const getResource = async (url) => {
         throw new Error(`Could not fetch ${url}, status: ${res.status}`);
     }
 
-    return await res.text();
+    return await res.json();
 };
 
 export {postData, getResource};
