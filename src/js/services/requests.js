@@ -7,4 +7,14 @@ const postData = async (url, data) => {
     return await res.text();
 };
 
-export {postData};
+const getResource = async (url) => {
+    let res = await fetch(url);
+
+    if (!res.ok) {
+        throw new Error(`Could not fetch ${url}, status: ${res.status}`);
+    }
+
+    return await res.text();
+};
+
+export {postData, getResource};
