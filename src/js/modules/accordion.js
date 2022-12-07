@@ -1,8 +1,17 @@
 const accordion = (triggersSelector) => {
     const btns = document.querySelectorAll(triggersSelector);
         
+    const closeButtons = () => {
+        btns.forEach(btn => {
+            btn.classList.remove('active-style');
+            btn.nextElementSibling.classList.remove('active-content');
+            btn.nextElementSibling.style.maxHeight = '0px';
+        });
+    };
+
     btns.forEach(btn => {
         btn.addEventListener('click', function() {
+            closeButtons();
             this.classList.toggle('active-style');
             this.nextElementSibling.classList.toggle('active-content');
 
@@ -13,24 +22,6 @@ const accordion = (triggersSelector) => {
             }
         });
     });
-
-
-    //   blocks = document.querySelectorAll(itemsSelector);
-    
-    // blocks.forEach(block => {
-    //     block.classList.add('animated', 'fadeInDown');
-    // });
-
-    // btns.forEach(btn => {
-    //     btn.addEventListener('click', function() {
-    //         if (!this.classList.contains('active')) {
-    //             btns.forEach(btn => {
-    //                 btn.classList.remove('active', 'active-style');
-    //             });
-    //             this.classList.add('active', 'active-style');
-    //         }
-    //     });
-    // });
 };
 
 export default accordion;
